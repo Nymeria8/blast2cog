@@ -17,9 +17,9 @@ Notes:
 
 ##Depends on:
 
-The [COG](ftp://ftp.ncbi.nih.gov/pub/COG/COG/) or [KOG](ftp://ftp.ncbi.nih.gov/pub/COG/KOG/) databases, specificly the files fun.txt, pa and kog/whog, depending of the database used.
+The [COG](http://ftp.ncbi.nih.gov/pub/COG/COG/) or [KOG](http://ftp.ncbi.nih.gov/pub/COG/KOG/) databases, specificly the files fun.txt, pa and kog/whog, depending of the database used.
 
-+ Rapseach2 .m8 file of your sequences against the sequences of the COG/KOG database
++ Rapseach2 .m8 file of your sequences against the sequences of the COG/KOG databased
 
 + Python3
 
