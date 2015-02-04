@@ -1,12 +1,13 @@
 #usage: python rap2cog.py infile(.m8 from rapsearch) outfile
+
 from sys import argv
 
 rap=open(argv[1]) #rapsearch result
-specie=open("species") #org.txt  specie annotation
+specie=open("species") #specie annotation
 function=open("fun.txt") #function category
-totalinf=open("kog")#whog  contains information on each COG, including the COG name,functional classification (using a one-letter code), function description, and the the list of proteins (or domains) from all  66 complete genomes included in the COG database.
-equal=open("pa")
-out=open(argv[2],"w")
+totalinf=open("kog")# or whog  contains information on each COG, including the COG name,functional classification (using a one-letter code), function description, and the the list of proteins (or domains) from all  66 complete genomes included in the COG database.
+equal=open("pa")#database file
+out=open(argv[2],"w")#output file
 
 dicrap={}
 org={}
@@ -18,7 +19,7 @@ for i in rap:
 	q=i.split("\t")
 	if i.startswith("#")==False:
 		if q[0] not in dicrap:
-			dicrap[q[0]]=q[1] #dicionario com o scaffold e o hit, no tipo YGR109w-b_2
+			dicrap[q[0]]=q[1] #dicionario with query and hits
 
 for u in specie:
 	p=u.split("  ")
@@ -29,7 +30,7 @@ print (org)
 for e in function:
 	if e.startswith(" ["):
 		v=e.split("]")
-		func[v[0].strip()+"]"]=cat+v[1].strip("\n") #dicionario tipo [J] - INFORMATION  - Translation
+		func[v[0].strip()+"]"]=cat+v[1].strip("\n") #dicionary: [J] - INFORMATION  - Translation
 	else:
 		cat=(e.strip("\n"))+"\t"
 #		
@@ -46,7 +47,7 @@ for a in totalinf:
 		li.append(line)
 		acess=((z[-1].strip()).strip("\n")).split()
 		for r in acess:
-			total[r]=li #dic do tipo: hit= [[H],glutamate,Afu]
+			total[r]=li #dictionary: hit= [[H],glutamate,Afu]
 #
 for o in equal:
 	if o.startswith("  ")==False:
@@ -61,7 +62,7 @@ for o in equal:
 				diceq[la[0]].append(la[2])
 
 
-out.write("Scaffold\tHit\tCategory\tSubcategory\tDescription\tOrganism\n")
+out.write("Gene\tHit\tCategory\tSubcategory\tDescription\tOrganism\n")
 
 for key, value in dicrap.items():
 	if value in total:
